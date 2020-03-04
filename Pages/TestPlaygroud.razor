@@ -1,0 +1,51 @@
+﻿@page "/testplayground"
+
+<h3>Test Playground</h3>
+
+<h1>People Registered:</h1>
+<div class="row">
+    @foreach(Person person in _people)
+    {
+        <div class="col-sm-3 mb-4">
+            <PersonCard Person="person" />
+        </div>
+        if((_people.IndexOf(person) + 1) % 4 == 0)
+        {
+            <div class="w-100"></div>
+        }
+    }
+</div>
+
+<button class="btn btn-primary" @onclick="CreateNewPerson">New Person</button>
+<button class="btn btn-secondary" @onclick="SortPeople">Sort People</button>
+
+@if(_registerNewPerson)
+{
+    <PersonCard Person="@_newPerson" EditMode="true" HasEditButton="false"/>
+    <button class="btn btn-primary" @onclick="RegisterNewPerson" >Regiter New Person</button>
+} 
+
+
+
+@code {
+    private List<Person> _people = new List<Person>();
+    private bool _registerNewPerson = false;
+    private Person _newPerson;
+
+    private void CreateNewPerson()
+    {
+        _newPerson = new Person();
+        _registerNewPerson = true;
+    }
+
+    private void RegisterNewPerson()
+    {
+        _people.Add(_newPerson);
+        _registerNewPerson = false;
+    }
+
+    private void SortPeople()
+    {
+        _people = _people.OrderBy(p => p.Name).ToList();
+    }
+}

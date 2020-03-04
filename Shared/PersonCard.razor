@@ -1,0 +1,70 @@
+﻿<div class="card my-1" style="width: 18rem;">
+    <div class="card-body">
+        @if (!EditMode)
+        {
+            <h5 class="card-title">@Person.Name</h5>
+        }
+        else
+        {
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" @bind="@Person.Name">
+            </div>
+        }
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            @if (!EditMode)
+            {
+                <label>
+                    Age: @Person.Age
+                </label>
+            }
+            else
+            {
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Age</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" @bind="@Person.Age">
+                </div>
+            }
+        </li>
+        <li class="list-group-item">
+            @if (!EditMode)
+            {
+                <label>
+                    Occupation: @Person.Occupation
+                </label>
+            }
+            else
+            {
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Occupation</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" @bind="@Person.Occupation">
+                </div>
+            }
+        </li>
+    </ul>
+
+    @if (HasEditButton)
+    {
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitches" @bind="@EditMode" />
+            <label class="custom-control-label" for="customSwitches">Edit Mode</label>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public Person Person { get; set; }
+    [Parameter]
+    public bool EditMode { get; set; } = false;
+    [Parameter]
+    public bool HasEditButton { get; set; } = true;
+}
