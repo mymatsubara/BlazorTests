@@ -2,7 +2,10 @@
 
 <h3>Test Playground</h3>
 
+<CascadingValue Value="@_address">
+    <AddressComponent />
+</CascadingValue>
 
 @code {
-
+    private Address _address = new Address("Rua Borucatu, 1970", "São Paulo", "Saúde", "02151-312", "Brasil");
 }
