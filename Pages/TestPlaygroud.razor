@@ -1,8 +1,17 @@
 ﻿@page "/testplayground"
+@inject HttpClient Http
+@using BlazorTest.Shared.JobVacancyComponents
 
 <h3>Test Playground</h3>
 
+<JobVacancyComponent JobVacancy="@_jobVacancy" />
 
 @code {
+    private JobVacancy _jobVacancy = new JobVacancy();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _jobVacancy = await Http.GetJsonAsync<JobVacancy>(Global.APIRoot + "jobvacancy/1");
+    }
 
 }

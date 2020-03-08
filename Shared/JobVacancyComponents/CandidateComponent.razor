@@ -1,0 +1,12 @@
+﻿@namespace BlazorTest.Shared.JobVacancyComponents
+
+<h4>Candidate</h4>
+<h5>@Candidate?.Name</h5>
+<AddressComponent Address="@Candidate?.Address"/>
+
+
+
+@code {
+    [Parameter]
+    public Candidate Candidate { get; set; }
+}

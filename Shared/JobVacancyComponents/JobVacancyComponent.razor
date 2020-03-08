@@ -1,0 +1,25 @@
+﻿@namespace BlazorTest.Shared.JobVacancyComponents
+
+<div class="mb-5">
+    <h2>@JobVacancy?.JobPosition</h2>
+    <div class="row">
+        <div class="col-sm-6 h4">Closing Date</div>
+        <div class="col-sm-6 h5">@JobVacancy?.ClosingDate.ToString("MM-dd-yyyy")</div>
+    </div>
+
+    <AddressComponent Address="@JobVacancy?.Address" />
+</div>
+
+<div class="row">
+@foreach(JobApplication application in JobVacancy.JobApplications)
+{
+    <div class="col-sm-6">
+        <JobApplicationComponent JobApplication="application" />
+    </div>
+}
+</div>
+
+@code {
+    [Parameter]
+    public JobVacancy JobVacancy { get; set; }
+}
