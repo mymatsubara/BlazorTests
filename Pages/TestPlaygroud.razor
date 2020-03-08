@@ -4,22 +4,14 @@
 
 <h3>Test Playground</h3>
 
-<CascadingValue Value="@_address">
-    <AddressComponent />
-</CascadingValue>
-
-<CascadingValue Value="@_candidate">
-    <CandidateComponent />
-</CascadingValue>
-
-<p>@_address.AddressStr</p>
+<JobVacancyComponent JobVacancy="@_jobVacancy" />
 
 @code {
-    private Address _address = new Address();
-    private Candidate _candidate = new Candidate();
+    private JobVacancy _jobVacancy = new JobVacancy();
+
     protected override async Task OnInitializedAsync()
     {
-        _address = await Http.GetJsonAsync<Address>(Global.APIRoot + "address/1");
-        _candidate = await Http.GetJsonAsync<Candidate>(Global.APIRoot + "candidate/2");
+        _jobVacancy = await Http.GetJsonAsync<JobVacancy>(Global.APIRoot + "jobvacancy/1");
     }
+
 }

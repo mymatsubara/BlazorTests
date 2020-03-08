@@ -1,25 +1,24 @@
 ﻿@namespace BlazorTest.Shared.JobVacancyComponents
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 h5">Address</div>
-        <div class="col-sm-4 text-monospace">@Address?.AddressStr<br>@Address?.City</div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 h5">Area</div>
-        <div class="col-sm-4 text-monospace">@Address?.Area</div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 h5">Postal Code</div>
-        <div class="col-sm-4 text-monospace">@Address?.PostalCode</div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 h5">Country</div>
-        <div class="col-sm-4 text-monospace">@Address?.Country</div>
-    </div>
+<div class="row">
+    <div class="col-sm-6 font-rem1">Address</div>
+    <div class="col-sm-4 text-monospace">@Address?.AddressStr<br>@Address?.City</div>
+</div>
+<div class="row">
+    <div class="col-sm-6 font-rem1">Area</div>
+    <div class="col-sm-4 text-monospace">@Address?.Area</div>
+</div>
+<div class="row">
+    <div class="col-sm-6 font-rem1">Postal Code</div>
+    <div class="col-sm-4 text-monospace">@Address?.PostalCode</div>
+</div>
+<div class="row">
+    <div class="col-sm-6 font-rem1">Country</div>
+    <div class="col-sm-4 text-monospace">@Address?.Country</div>
 </div>
 
+
 @code {
-    [CascadingParameter]
+    [Parameter]
     public Address Address { get; set; }
 }
