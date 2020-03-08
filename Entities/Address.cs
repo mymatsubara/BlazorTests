@@ -7,7 +7,7 @@ namespace BlazorTest.Entities
 {
     public class Address
     {
-        public int ID { get; set }
+        public int ID { get; set; }
         public string AddressStr { get; set; }
         public string City { get; set; }
         public string Area { get; set; }

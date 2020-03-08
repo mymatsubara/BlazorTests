@@ -1,5 +1,6 @@
 ﻿@page "/testplayground"
 @inject HttpClient Http
+@using BlazorTest.Shared.JobVacancyComponents
 
 <h3>Test Playground</h3>
 
@@ -7,12 +8,18 @@
     <AddressComponent />
 </CascadingValue>
 
+<CascadingValue Value="@_candidate">
+    <CandidateComponent />
+</CascadingValue>
+
 <p>@_address.AddressStr</p>
 
 @code {
     private Address _address = new Address();
+    private Candidate _candidate = new Candidate();
     protected override async Task OnInitializedAsync()
     {
-        _address = await Http.GetJsonAsync<Address>(Global.APIRoot + "person/1");
+        _address = await Http.GetJsonAsync<Address>(Global.APIRoot + "address/1");
+        _candidate = await Http.GetJsonAsync<Candidate>(Global.APIRoot + "candidate/2");
     }
 }

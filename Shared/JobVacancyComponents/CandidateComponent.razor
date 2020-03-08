@@ -1,0 +1,13 @@
+﻿@namespace BlazorTest.Shared.JobVacancyComponents
+
+<h4>Candidate</h4>
+<h5>@Candidate?.Name</h5>
+<CascadingValue Value="@Candidate.Address">
+    <AddressComponent/>
+</CascadingValue>
+
+
+@code {
+    [CascadingParameter]
+    public Candidate Candidate { get; set; }
+}
